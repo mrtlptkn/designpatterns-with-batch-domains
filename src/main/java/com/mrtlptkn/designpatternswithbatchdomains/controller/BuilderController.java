@@ -5,6 +5,7 @@ import com.mrtlptkn.designpatternswithbatchdomains.batchs.factoryMethod.JobType;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.factoryMethod.JobFactory;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.builders.JobBuilder;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.builders.StepBuilder;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.singleton.JobLauncher;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.*;
 import com.mrtlptkn.designpatternswithbatchdomains.models.User;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -75,7 +76,9 @@ public class BuilderController {
                 .next(step4)
                 .build();
 
-        job2.execute(jobParameters2);
+        JobLauncher.getInstance().run(job2, jobParameters2);
+        JobLauncher.getInstance().run(job2, jobParameters2);
+        //job2.execute(jobParameters2); Bunun yerine JobLauncher tercih edeceğiz.
 
 
         // Factory Method

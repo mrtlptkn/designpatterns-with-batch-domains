@@ -25,7 +25,7 @@ public class JobExecution {
     private BatchStatus status;
 
 
-    public JobExecution(@org.jetbrains.annotations.UnknownNullability SimpleJob job, JobParameters jobParameters) {
+    public JobExecution(IJob job, JobParameters jobParameters) {
         this.id = UUID.randomUUID().toString();
         this.jobId = job.getId();
         this.jobName = job.getJobName();
