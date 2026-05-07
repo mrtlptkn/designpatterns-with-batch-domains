@@ -2,15 +2,13 @@ package com.mrtlptkn.designpatternswithbatchdomains.batchs.builders;
 
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.IJob;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.IStep;
-import com.mrtlptkn.designpatternswithbatchdomains.jobs.Job;
-
-import java.lang.reflect.Field;
+import com.mrtlptkn.designpatternswithbatchdomains.jobs.ScheduledJob;
 
 public class JobBuilder implements IJobBuilder  {
     private final IJob job;
 
     public JobBuilder(String jobName) {
-        this.job = new Job(jobName);
+        this.job = new ScheduledJob(jobName);
     }
 
     @Override

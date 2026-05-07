@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 
-public class Job implements IJob {
+public class SimpleJob implements IJob {
 
     @Getter
     private final String Id;
@@ -18,7 +18,7 @@ public class Job implements IJob {
     @Getter
     private final List<IStep> steps; // Job'un adımlarını tutar
 
-    public Job(String jobName) {
+    public SimpleJob(String jobName) {
         this.Id = UUID.randomUUID().toString();
         this.jobName = jobName;
         this.steps = new ArrayList<>(); // Her jobın en az çalıştırılacak bir adaet step olması lazım

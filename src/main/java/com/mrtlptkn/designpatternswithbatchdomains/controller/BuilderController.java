@@ -1,8 +1,7 @@
 package com.mrtlptkn.designpatternswithbatchdomains.controller;
 
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory.*;
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.builders.IJobBuilder;
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.builders.IStepBuilder;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.factoryMethod.JobFactory;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.builders.JobBuilder;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.builders.StepBuilder;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.*;
@@ -25,8 +24,7 @@ public class BuilderController {
 
 
 
-
-        Job jb = new Job("Job1");
+        SimpleJob jb = new SimpleJob("Job1");
         jb.addStep(step1);
         jb.addStep(step2);
 
@@ -35,7 +33,6 @@ public class BuilderController {
         jobParameters.addParameter("env", "prod");
 
         jb.execute(jobParameters);
-
 
 
         // ------------------------------------ WITH BUILDER PATTERN ------------------------------------
@@ -70,12 +67,19 @@ public class BuilderController {
                 .withWriter(xmlUserItemWriter)
                 .build();
 
+
         IJob job2 = new JobBuilder("Job1")
                 .start(step3)
                 .next(step4)
                 .build();
 
         job2.execute(jobParameters2);
+
+
+        // Factory Method
+        IJob job3 = new JobFactory("SimpleJob").createJob("Job3");
+        IJob job4 = new JobFactory("Autonomous").createJob("Job4");
+
 
 
         return "Builder Pattern executed successfully!";
