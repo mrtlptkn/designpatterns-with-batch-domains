@@ -1,14 +1,17 @@
 package com.mrtlptkn.designpatternswithbatchdomains.batchs.builders;
 
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.factoryMethod.JobType;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.factoryMethod.JobFactory;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.IJob;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.IStep;
-import com.mrtlptkn.designpatternswithbatchdomains.jobs.ScheduledJob;
+
 
 public class JobBuilder implements IJobBuilder  {
     private final IJob job;
 
-    public JobBuilder(String jobName) {
-        this.job = new ScheduledJob(jobName);
+    public JobBuilder(String jobName, JobType jobType) {
+        // JobFactory üzerinden herhangi bir job'a göre çalışma esnekliği kazanmış oldu.
+        this.job = JobFactory.createJob(jobType,jobName);
     }
 
     @Override

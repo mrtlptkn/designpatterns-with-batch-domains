@@ -1,6 +1,7 @@
 package com.mrtlptkn.designpatternswithbatchdomains.controller;
 
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory.*;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.factoryMethod.JobType;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.factoryMethod.JobFactory;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.builders.JobBuilder;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.builders.StepBuilder;
@@ -68,7 +69,8 @@ public class BuilderController {
                 .build();
 
 
-        IJob job2 = new JobBuilder("Job1")
+        // Gramer açısından Daha kullanışlı bir yöntem.
+        IJob job2 = new JobBuilder("Job1",JobType.Simple)
                 .start(step3)
                 .next(step4)
                 .build();
@@ -77,8 +79,16 @@ public class BuilderController {
 
 
         // Factory Method
-        IJob job3 = new JobFactory("SimpleJob").createJob("Job3");
-        IJob job4 = new JobFactory("Autonomous").createJob("Job4");
+//        IJob job3 = new StandartJobFactory("SimpleJob").createJob("Job3");
+//        IJob job4 = new StandartJobFactory("Autonomous").createJob("Job4");
+
+        // aşağıdaki genel olarak daha kullanışsız bir yöntem.
+       IJob jb4 =  JobFactory.createJob(JobType.Simple, "Job3");
+       jb4.addStep(step3);
+       jb4.addStep(step4);
+       jb4.execute(jobParameters2);
+
+        JobFactory.createJob(JobType.Autonomous, "Job4").execute(jobParameters2);
 
 
 
