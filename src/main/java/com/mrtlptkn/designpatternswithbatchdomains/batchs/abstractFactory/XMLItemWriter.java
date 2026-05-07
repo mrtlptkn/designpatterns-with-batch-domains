@@ -2,6 +2,8 @@ package com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory;
 
 import java.util.List;
 
+
+// CONCRETE PRODUCT
 public class XMLItemWriter<T> implements IitemWriter<T> {
 
     private final String filePath; // Hangi dosyaya yazma işlemi yapılacak

@@ -1,5 +1,7 @@
 package com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory;
 
+
+// CONCRETE FACTORY
 public class CsvBatchingProcessingFactory<T>  extends BatchingProcessionFactory<T> implements IBatchingProcessingFactory<T> {
 
 

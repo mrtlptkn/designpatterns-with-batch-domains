@@ -2,7 +2,8 @@ package com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory;
 
 import java.util.List;
 
-// Concerete Product
+
+// CONCRETE PRODUCT
 public class CsvItemReader<T> implements IitemReader<T> {
 
     private final String filePath;

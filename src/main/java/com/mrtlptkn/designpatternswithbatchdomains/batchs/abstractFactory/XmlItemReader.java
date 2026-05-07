@@ -3,6 +3,8 @@ package com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+
+// CONCRETE PRODUCT
 public class XmlItemReader<T> implements IitemReader<T> {
 
     private final String filePath;

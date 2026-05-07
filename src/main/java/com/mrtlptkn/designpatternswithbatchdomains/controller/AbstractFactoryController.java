@@ -19,6 +19,10 @@ public class AbstractFactoryController {
         // user.csv dosyasında okuma yaparken User.Class yazma işlemi yapıcam
         IBatchingProcessingFactory<User> userIBatchingProcessingFactory = new CsvBatchingProcessingFactory<>("user.csv", User.class);
 
+
+
+
+
         User usr = new User(1, "Ahmet", "Yılmaz","05555554422");
 
         // new CsvProcessing();
