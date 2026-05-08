@@ -2,6 +2,10 @@ package com.mrtlptkn.designpatternswithbatchdomains.controller;
 
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.command.IStepCommand;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.command.RetryStepCommand;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.observer.AliSubscriber;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.observer.Ilan;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.observer.IlanObserver;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.observer.MertSubscriber;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.state.Opportunity;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.structural.facade.BatchJobFacade;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.*;
@@ -62,6 +66,34 @@ public class TestController {
         return "Builder Pattern executed successfully!";
     }
 
+    @PostMapping("observer")
+    public String observer() {
+        Ilan ilan =
+                new Ilan(
+                        1,
+                        "Sahibinden BMW",
+                        950000
+                );
+
+        // Subscribers
+        IlanObserver mert =
+                new MertSubscriber();
+
+        IlanObserver ali =
+                new AliSubscriber();
+
+
+        // Takibe al
+        ilan.subscribe(mert);
+        ilan.subscribe(ali);
+
+        // Fiyat değiştir
+        ilan.changePrice(920000);
+
+        ilan.changePrice(890000);
+
+        return "OK";
+    }
 
 
 
