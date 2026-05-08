@@ -6,6 +6,7 @@ import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.factoryMeth
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.builder.JobBuilder;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.builder.StepBuilder;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.singleton.JobLauncher;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.structural.proxy.CsvItemReaderProxy;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.*;
 import com.mrtlptkn.designpatternswithbatchdomains.models.User;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -59,13 +60,17 @@ public class BuilderController {
 
 
         // Senaryo 2 -> CSV okur -> CSV den okunan process eder -> Users.XML dosyasına yaz.
-        IitemReader<User> csvUserItemReader = new CsvItemReader<>("users.csv", User.class);
+
+        CsvItemReader<User> csvUserItemReader = new CsvItemReader<>("users.csv", User.class);
+        // altına ekstra bir kod satırı ekledim. Eklediğimiz yerde Prensentaion Layer -> Buraya rahatlıkla yeni bir feature eklenebilir.
+        IitemReader<User> csvUserItemReaderProxy = new CsvItemReaderProxy<>(csvUserItemReader);
+
         IitemProcessor<User> csvUserItemProcessor = new CSVItemProcessor<>();
         IitemWriter<User> xmlUserItemWriter = new XMLItemWriter<>(  "users.xml");
 
         // Csv de bi hata var ? Neden ?
         IStep step4 = new StepBuilder<User>("Step4")
-                .withReader(csvUserItemReader)
+                .withReader(csvUserItemReaderProxy) // refansı güncelledim
                 .withProcessor(csvUserItemProcessor)
                 .withWriter(xmlUserItemWriter)
                 .build();
@@ -93,6 +98,8 @@ public class BuilderController {
 
         JobFactory.createJob(JobType.Autonomous, "Job4").execute(jobParameters2);
 
+
+//        User usss = User.builder().firstName("Ali").build();
 
 
         return "Builder Pattern executed successfully!";

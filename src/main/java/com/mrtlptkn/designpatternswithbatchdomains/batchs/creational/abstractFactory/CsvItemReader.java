@@ -1,11 +1,14 @@
 package com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory;
 
+import lombok.Getter;
+
 import java.util.List;
 
 
 // CONCRETE PRODUCT
 public class CsvItemReader<T> implements IitemReader<T> {
 
+    @Getter
     private final String filePath;
     private final Class<T> type;
 

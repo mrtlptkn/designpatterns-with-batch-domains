@@ -9,6 +9,7 @@ import com.mrtlptkn.designpatternswithbatchdomains.jobs.SimpleJob;
 // Aynı aileden türüyen nesnelerin ilgili nesne tipine göre concrete sınıflarını subclasslarını üretmek.
 // aslında slt sınıflar factory bir sınıf üzerinden üretebilmemizi sağlar.
 // Thread Safe -> bu kodda ciddi instance problemleri oluşabilir.
+// OCP aykırı bir kod yaklaşımı
 public class JobFactory {
 
 
