@@ -6,6 +6,8 @@ import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.builder.Job
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.builder.StepBuilder;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.factoryMethod.JobType;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.singleton.JobLauncher;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.structural.adapter.ExternalXMLItemReader;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.structural.adapter.ExternalXMlReaderAdapter;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.structural.proxy.CsvItemReaderProxy;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.IJob;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.IStep;
@@ -46,7 +48,27 @@ public class BatchJobFacade {
 
                 jobBuilder.next(step);
             } else if (item.type().equals("xml")) {
-                IitemReader<User> itemReader = new XmlItemReader<>("data.xml", User.class);
+
+
+
+
+//                IitemReader<User> itemReader = new XmlItemReader<>("data.xml", User.class);
+
+                // Senaryo: Bizim sistemde xmlreader da sorun vardı. Başka bir kütüphanden yararlanmak istedik.
+                // Bu durumda küphanedeki kodda bize uyum sağlamıyor
+                // Ne yapacağız ? Adapter pattern ile library kodu kendi sistemimiz bozmandan adapte edeceğiz.
+                ExternalXMLItemReader externalXMLItemReader = new ExternalXMLItemReader();
+                // Libraryden gelen bizim yazmadığımız referans olarak kullanmak istediğimiz kod
+
+                IitemReader<User> itemReader = new ExternalXMlReaderAdapter<>(externalXMLItemReader,"data.xml", User.class);
+                // Uygulamada library üzerinden kullnacağımız bizim yazdığımız ara kod.
+                // Anti corruption layer. -> Buna biz bozulma önleyici katman
+                // Yolsuzluk Önleme Katmanı, Bozulma Önleyici Katman
+
+                // Adapter'ı araya koydu eski librayden okuyacak şekilde ama bizim formatımıza çevirek şekilde kodu adapte ettik.
+
+
+
                 IitemProcessor<User> itemProcessor = new XmlItemProcessor<>();
                 IitemWriter<User> itemWriter = new XMLItemWriter<>("data-result.xml");
 
