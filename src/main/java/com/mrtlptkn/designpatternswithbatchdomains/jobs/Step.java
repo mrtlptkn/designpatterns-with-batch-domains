@@ -50,11 +50,11 @@ public class Step<T> implements IStep {
             if(reader != null) {
                 List<T> data = reader.read();
                 System.out.println("Dosya okundu");
-
-                if(processor != null) {
-                    data.replaceAll(item -> processor.process(item));
-                    System.out.println("Dosya İşlendi");
-                }
+//
+//                if(processor != null) {
+//                    data.replaceAll(item -> processor.process(item));
+//                    System.out.println("Dosya İşlendi");
+//                }
 
                 if(writer != null) {
                     writer.write(data);
