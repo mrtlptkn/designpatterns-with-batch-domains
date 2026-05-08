@@ -7,10 +7,7 @@ import com.mrtlptkn.designpatternswithbatchdomains.jobs.IStep;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.Step;
 
 public class StepBuilder<T> implements IStepBuilder<T> {
-    private final IStep step;
-    private IitemReader<T> reader;
-    private IitemWriter<T> writer;
-    private IitemProcessor<T> processor;
+    private final Step<T> step;
     public StepBuilder(String stepName) {
         this.step = new Step(stepName);
     }
@@ -19,19 +16,19 @@ public class StepBuilder<T> implements IStepBuilder<T> {
         return this.step;
     }
     @Override
-    public IStepBuilder<T> withReader(IitemReader<T> iitemReader) {
-        this.reader = iitemReader;
+    public IStepBuilder<T> withReader(IitemReader<T> iitemReader) { // method Injection
+        this.step.setReader(iitemReader);
         // Step SetItemReader yapalım.
         return this;
     }
     @Override
     public IStepBuilder<T> withWriter(IitemWriter<T> iitemWriter) {
-        this.writer = iitemWriter;
+        this.step.setWriter(iitemWriter);
         return this;
     }
     @Override
     public IStepBuilder<T> withProcessor(IitemProcessor<T> iitemProcessor) {
-        this.processor = iitemProcessor;
+        this.step.setProcessor(iitemProcessor);
         return this;
     }
 }

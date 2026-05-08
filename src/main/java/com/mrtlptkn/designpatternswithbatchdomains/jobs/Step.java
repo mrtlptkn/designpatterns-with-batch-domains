@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 // execute methodunda yapılan önce read sonra process en son write yapar Bu sebeple bir bir template yapısı üzerinden execute kodunun çalışmasını sağlıyoruz ama sadece tek bir step üzerinde çalıştığımız için tam olarak bir template Method tasarım deseni yaptığımız söylenemez.
+// -> Behaviors -> Template Method bakabiliriz.
 
 public class Step<T> implements IStep {
 

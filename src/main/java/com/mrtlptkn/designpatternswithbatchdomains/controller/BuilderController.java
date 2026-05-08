@@ -34,7 +34,7 @@ public class BuilderController {
         jobParameters.addParameter("date", "2024-01-01");
         jobParameters.addParameter("env", "prod");
 
-        jb.execute(jobParameters);
+//        jb.execute(jobParameters);
 
 
         // ------------------------------------ WITH BUILDER PATTERN ------------------------------------
@@ -63,6 +63,7 @@ public class BuilderController {
         IitemProcessor<User> csvUserItemProcessor = new CSVItemProcessor<>();
         IitemWriter<User> xmlUserItemWriter = new XMLItemWriter<>(  "users.xml");
 
+        // Csv de bi hata var ? Neden ?
         IStep step4 = new StepBuilder<User>("Step4")
                 .withReader(csvUserItemReader)
                 .withProcessor(csvUserItemProcessor)
@@ -76,7 +77,6 @@ public class BuilderController {
                 .next(step4)
                 .build();
 
-        JobLauncher.getInstance().run(job2, jobParameters2);
         JobLauncher.getInstance().run(job2, jobParameters2);
         //job2.execute(jobParameters2); Bunun yerine JobLauncher tercih edeceğiz.
 
