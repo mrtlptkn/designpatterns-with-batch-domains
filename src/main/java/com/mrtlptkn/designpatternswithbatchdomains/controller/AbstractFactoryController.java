@@ -5,7 +5,11 @@ import com.mrtlptkn.designpatternswithbatchdomains.models.User;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 @RestController
@@ -14,7 +18,7 @@ public class AbstractFactoryController {
 
 
     @PostMapping("test")
-    public String test(){
+    public String test() throws ParserConfigurationException, IOException, InvocationTargetException, SAXException, NoSuchMethodException, InstantiationException, IllegalAccessException {
 
         // user.csv dosyasında okuma yaparken User.Class yazma işlemi yapıcam
         IBatchingProcessingFactory<User> userIBatchingProcessingFactory = new CsvBatchingProcessingFactory<>("user.csv", User.class);

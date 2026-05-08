@@ -12,6 +12,8 @@ public class User {
     private Integer id;
     private String firstName;
     private String lastName;
-    private String phoneNumber;
+    public String phoneNumber; // private da fieldName erişim olmuyor.
+
+
 
 }
