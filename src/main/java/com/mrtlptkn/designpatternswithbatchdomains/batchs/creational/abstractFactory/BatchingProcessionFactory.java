@@ -1,4 +1,4 @@
-package com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory;
+package com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory;
 
 public abstract class BatchingProcessionFactory<T> implements IBatchingProcessingFactory<T> {
 

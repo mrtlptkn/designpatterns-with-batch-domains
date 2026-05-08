@@ -22,6 +22,8 @@ public class Step implements IStep {
     public StepExecution execute() {
         StepExecution stepExecution = new StepExecution(this);
 
+        // read, write, process süreçleri eksik.
+
         try {
             System.out.println("Executing step: " + stepName);
             stepExecution.setStatus(BatchStatus.Completed);

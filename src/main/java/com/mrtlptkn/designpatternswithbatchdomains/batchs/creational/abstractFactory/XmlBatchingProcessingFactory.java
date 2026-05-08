@@ -1,4 +1,4 @@
-package com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory;
+package com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory;
 
 // CONCRETE FACTORY
 public class XmlBatchingProcessingFactory<T> extends BatchingProcessionFactory<T> implements IBatchingProcessingFactory<T> {

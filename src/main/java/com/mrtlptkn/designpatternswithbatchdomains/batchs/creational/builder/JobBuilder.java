@@ -1,7 +1,7 @@
-package com.mrtlptkn.designpatternswithbatchdomains.batchs.builders;
+package com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.builder;
 
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.factoryMethod.JobType;
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.factoryMethod.JobFactory;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.factoryMethod.JobType;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.factoryMethod.JobFactory;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.IJob;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.IStep;
 

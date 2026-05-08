@@ -1,4 +1,4 @@
-package com.mrtlptkn.designpatternswithbatchdomains.batchs.builders;
+package com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.builder;
 
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.IJob;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.IStep;

@@ -1,4 +1,4 @@
-package com.mrtlptkn.designpatternswithbatchdomains.batchs.factoryMethod;
+package com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.factoryMethod;
 
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.AutonomousJob;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.IJob;

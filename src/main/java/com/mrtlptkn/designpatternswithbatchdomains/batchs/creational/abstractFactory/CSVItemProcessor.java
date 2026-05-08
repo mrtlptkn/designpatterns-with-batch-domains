@@ -1,4 +1,4 @@
-package com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory;
+package com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory;
 
 // CONCRETE PRODUCT
 public class CSVItemProcessor<T> implements IitemProcessor<T> {

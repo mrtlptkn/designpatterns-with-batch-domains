@@ -1,6 +1,6 @@
 package com.mrtlptkn.designpatternswithbatchdomains.controller;
 
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory.*;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory.*;
 import com.mrtlptkn.designpatternswithbatchdomains.models.User;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

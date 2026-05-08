@@ -8,6 +8,8 @@ import java.util.UUID;
 // Joblar run edilince JobExecution olarak kaydedilirdi
 public class JobExecution {
 
+    // JobState takibi yapalım.
+
     @Getter
     private final String id;
 

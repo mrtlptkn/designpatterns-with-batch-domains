@@ -1,4 +1,4 @@
-package com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory;
+package com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory;
 
 import java.util.ArrayList;
 import java.util.List;

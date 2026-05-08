@@ -1,4 +1,4 @@
-package com.mrtlptkn.designpatternswithbatchdomains.batchs.singleton;
+package com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.singleton;
 
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.IJob;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.JobExecution;

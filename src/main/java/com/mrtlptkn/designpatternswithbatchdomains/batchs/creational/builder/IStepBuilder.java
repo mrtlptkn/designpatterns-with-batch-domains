@@ -1,8 +1,8 @@
-package com.mrtlptkn.designpatternswithbatchdomains.batchs.builders;
+package com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.builder;
 
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory.IitemProcessor;
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory.IitemReader;
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory.IitemWriter;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory.IitemProcessor;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory.IitemReader;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory.IitemWriter;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.IStep;
 
 // Step  -> Userclass okuyabilir Identity Class da okuyabilir, Role Class okuyabilir.

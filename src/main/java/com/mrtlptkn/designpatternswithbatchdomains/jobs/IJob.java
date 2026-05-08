@@ -11,4 +11,6 @@ public interface IJob {
     // Composition Pattern: Job, Step'lerden oluşur
     void addStep(IStep step); // IStep interface ekle
     List<IStep> getSteps(); // Job Steps
+
+    // Job Listener ekleyelim.
 }

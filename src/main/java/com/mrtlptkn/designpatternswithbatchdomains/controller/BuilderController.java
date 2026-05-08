@@ -1,11 +1,11 @@
 package com.mrtlptkn.designpatternswithbatchdomains.controller;
 
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory.*;
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.factoryMethod.JobType;
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.factoryMethod.JobFactory;
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.builders.JobBuilder;
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.builders.StepBuilder;
-import com.mrtlptkn.designpatternswithbatchdomains.batchs.singleton.JobLauncher;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory.*;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.factoryMethod.JobType;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.factoryMethod.JobFactory;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.builder.JobBuilder;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.builder.StepBuilder;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.singleton.JobLauncher;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.*;
 import com.mrtlptkn.designpatternswithbatchdomains.models.User;
 import org.springframework.web.bind.annotation.PostMapping;

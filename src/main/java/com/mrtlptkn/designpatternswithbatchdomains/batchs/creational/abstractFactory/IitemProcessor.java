@@ -1,4 +1,4 @@
-package com.mrtlptkn.designpatternswithbatchdomains.batchs.abstractFactory;
+package com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory;
 
 // Abstract Product
 public interface IitemProcessor<T> {
