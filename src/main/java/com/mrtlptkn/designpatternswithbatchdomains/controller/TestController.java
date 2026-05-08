@@ -2,6 +2,7 @@ package com.mrtlptkn.designpatternswithbatchdomains.controller;
 
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.command.IStepCommand;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.command.RetryStepCommand;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.state.Opportunity;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.structural.facade.BatchJobFacade;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.*;
 import com.mrtlptkn.designpatternswithbatchdomains.models.JobRequest;
@@ -39,6 +40,28 @@ public class TestController {
 
         return "Builder Pattern executed successfully!";
     }
+
+
+    // Not: Her state için bir süreç olduğundan dolayı burada tek tek post endpoint açılır.
+    @PostMapping("/state")
+    public String state() {
+
+        Opportunity opportunity = new Opportunity("asd");
+
+        opportunity.printStatus();
+
+        opportunity.startNegotiation();
+        opportunity.printStatus();
+
+        opportunity.win();
+        opportunity.printStatus();
+
+        // Hata fırlatır
+        opportunity.lose();
+
+        return "Builder Pattern executed successfully!";
+    }
+
 
 
 

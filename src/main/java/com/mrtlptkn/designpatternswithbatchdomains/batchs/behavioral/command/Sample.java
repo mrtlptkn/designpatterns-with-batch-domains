@@ -18,6 +18,7 @@ public class Sample {
         }
     }
 
+    // Not: Command Pattern bize SRP prensibene uygun request bazlı (komut bazlı) istekleri yönetebilme bakış akışı sağlar.
     public class LightOnCommand implements Command {
 
         private final Light light; // Step
