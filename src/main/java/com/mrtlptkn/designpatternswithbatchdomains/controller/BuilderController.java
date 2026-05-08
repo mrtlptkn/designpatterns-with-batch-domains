@@ -1,5 +1,7 @@
 package com.mrtlptkn.designpatternswithbatchdomains.controller;
 
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.command.IStepCommand;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.command.RetryStepCommand;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory.*;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.factoryMethod.JobType;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.factoryMethod.JobFactory;
@@ -30,6 +32,12 @@ public class BuilderController {
 
     @PostMapping("/test")
     public String test(@RequestBody JobRequest request) {
+
+
+        // Örnek kullanım şekli
+        IStepCommand stepCommand = new RetryStepCommand(5);
+        stepCommand.execute(new StepExecution(new Step("A")));
+
 
         JobExecution execution =  jobFacade.run(request);
 
