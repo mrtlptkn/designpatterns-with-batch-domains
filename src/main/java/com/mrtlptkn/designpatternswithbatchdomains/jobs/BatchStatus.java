@@ -5,5 +5,6 @@ package com.mrtlptkn.designpatternswithbatchdomains.jobs;
 public enum BatchStatus {
     Started,
     Completed,
-    Failed
+    Failed,
+    Retry
 }

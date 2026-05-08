@@ -1,5 +1,7 @@
 package com.mrtlptkn.designpatternswithbatchdomains.jobs;
 
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.command.IStepCommand;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.command.RetryStepCommand;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory.IitemProcessor;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory.IitemReader;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.creational.abstractFactory.IitemWriter;
@@ -30,15 +32,37 @@ public class Step<T> implements IStep {
     @Setter
     private IitemProcessor<T> processor;
 
+    // bir step birden fazla komutu uygulayabilir.
+    // Bütün eklenen komutlar ara bir süreç olarak işletilebilir.
+    private List<IStepCommand> stepCommands;
+
     public Step(String stepName) {
         this.id = UUID.randomUUID().toString();
         this.stepName = stepName;
+        this.stepCommands = new ArrayList<>();
     }
+
+    @Setter
+    @Getter
+    private  RetryStepCommand retryCommand;
+
+
 
 
     @Override
     public StepExecution execute() {
         StepExecution stepExecution = new StepExecution(this);
+
+
+        // tekli kod çalıştırma
+        // çoklu command çalıştırma örneği
+//        this.stepCommands.forEach(command -> {
+//            if(command instanceof RetryStepCommand){
+//                // bu durumda kod 3 kez denenir.
+//                // command.execute 3 kere en fazla hata alınabilir. Kodumuz makimum Retries sayısı kadar denenir.
+//                command.execute(stepExecution);
+//            }
+//        });
 
         // read, write, process süreçleri eksik.
         try {
@@ -77,6 +101,16 @@ public class Step<T> implements IStep {
 
         return stepExecution;
 
+    }
+
+    @Override
+    public RetryStepCommand getRetryCommand() {
+        return this.retryCommand;
+    }
+
+    @Override
+    public void addCommand(IStepCommand command) {
+        this.stepCommands.add(command);
     }
 
 
