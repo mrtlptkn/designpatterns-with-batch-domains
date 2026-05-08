@@ -2,6 +2,10 @@ package com.mrtlptkn.designpatternswithbatchdomains.controller;
 
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.command.IStepCommand;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.command.RetryStepCommand;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.mediator.ChatMediator;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.mediator.ChatRoom;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.mediator.ChatParticipant;
+import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.mediator.Participant;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.observer.AliSubscriber;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.observer.Ilan;
 import com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.observer.IlanObserver;
@@ -93,6 +97,38 @@ public class TestController {
         ilan.changePrice(890000);
 
         return "OK";
+    }
+
+    @PostMapping("mediator")
+    public String mediator(){
+
+        // chat odası -> mesajlaşma yönetimi
+        ChatMediator mediator =
+                new ChatRoom();
+
+        // odaya kayıt olan kişiler
+        Participant ahmet =
+                new ChatParticipant(mediator, "Ahmet");
+
+        Participant mert =
+                new ChatParticipant(mediator, "Mert");
+
+        Participant ali =
+                new ChatParticipant(mediator, "Ali");
+
+        // odaya giriş
+        mediator.addParticipant(ahmet);
+        mediator.addParticipant(mert);
+        mediator.addParticipant(ali);
+
+        // amaç birbirleri heberleşme ama bunu mediator üzerinden yapacaklar
+        ahmet.send("Merhaba arkadaşlar");
+
+        System.out.println();
+
+        mert.send("Selam Ahmet");
+
+        return  "OK";
     }
 
 
