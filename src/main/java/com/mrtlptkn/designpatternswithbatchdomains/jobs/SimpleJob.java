@@ -40,10 +40,6 @@ public class SimpleJob implements IJob {
         for (IStep step : steps) {
 
             StepExecution stepExecution =  step.execute();
-            // step execution sonrası ekstra bir komut çalıştırma yaptık.
-            step.getRetryCommand().execute(stepExecution);
-
-
 
            System.out.println(stepExecution.getStepName() + " step jobExecution status: " + stepExecution.getStatus());
 

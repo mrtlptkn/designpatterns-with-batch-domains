@@ -14,7 +14,5 @@ public interface IStepBuilder<T> {
     IStepBuilder<T> withWriter(IitemWriter<T> iitemWriter); // step içerisinde yazma işlemi yapıcam
     IStepBuilder<T> withProcessor(IitemProcessor<T> iitemProcessor); // step içerisinde işleme işlemi yapıcam
 
-    // builder oluşturuken kaç kez denenceği de girilsin istiyoruz.
-    IStepBuilder<T> withRetry(int maxRetries);
 
 }

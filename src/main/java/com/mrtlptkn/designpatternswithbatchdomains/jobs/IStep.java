@@ -7,6 +7,4 @@ public interface IStep {
     String getId();
     String getStepName();
     StepExecution execute();
-    RetryStepCommand getRetryCommand();
-    void addCommand(IStepCommand command);
 }

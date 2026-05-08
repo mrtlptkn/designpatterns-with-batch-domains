@@ -1,6 +1,7 @@
 package com.mrtlptkn.designpatternswithbatchdomains.batchs.behavioral.command;
 
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.BatchStatus;
+import com.mrtlptkn.designpatternswithbatchdomains.jobs.IStep;
 import com.mrtlptkn.designpatternswithbatchdomains.jobs.StepExecution;
 
 
@@ -10,34 +11,41 @@ public class RetryStepCommand implements IStepCommand {
 
     private  final  int maxRetries;
     private int currentRetry = 0;
+    private IStep step;
 
-    public RetryStepCommand(int maxRetries){
+    public RetryStepCommand(int maxRetries,IStep step){
+
         this.maxRetries = maxRetries;
+        this.step = step;
     }
 
     // Sorumlulu alan sınıf belirli bir davranış logic uygular.
 
     @Override
-    public void execute(StepExecution stepExecution) {
+    public void execute() {
+        boolean success = false;
+        do {
 
-        while (currentRetry < maxRetries){
             try {
 
-                if(currentRetry > 0) {
-                    System.out.println("Tekrar deneme algoritması");
-                    stepExecution.setStatus(BatchStatus.Retry);
-                }
+                StepExecution execution = step.execute();
+                success = true;
+                System.out.println("İşlem başarılı");
 
             } catch (RuntimeException e) {
                 currentRetry++;
-                System.out.println("Kaç kez denendi " + 3);
-               if(currentRetry >= maxRetries) { // 3 limiti varmış aşmış artık hata olarak yakaladık işaretledik.
-                   stepExecution.setStatus(BatchStatus.Failed);
-               }
-            }
-        }
 
-        stepExecution.setStatus(BatchStatus.Completed);
+                System.out.println(
+                        "Hata oluştu. Deneme sayısı: "
+                                + currentRetry);
+                if (currentRetry < maxRetries) {
+                    System.out.println("Tekrar deneniyor...");
+                } else {
+                    System.out.println("Max retry sayısına ulaşıldı");
+                }
+            }
+
+        } while (!success && currentRetry < maxRetries);
 
     }
 }

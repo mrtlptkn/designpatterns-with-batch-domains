@@ -33,10 +33,5 @@ public class StepBuilder<T> implements IStepBuilder<T> {
         return this;
     }
 
-    @Override
-    public IStepBuilder<T> withRetry(int maxRetries) {
-        this.step.setRetryCommand(new RetryStepCommand(maxRetries)); // Tekli Kullanım
-        this.step.addCommand(new RetryStepCommand(maxRetries)); // eğer withRetry çağırılırsa RetryStepCommand step içerisinde yeni bir komut olarak eklensin.
-        return this;
-    }
+
 }

@@ -76,7 +76,6 @@ public class BatchJobFacade {
                         .withReader(itemReader)
                         .withProcessor(itemProcessor)
                         .withWriter(itemWriter)
-                        .withRetry(5) // RetryCommand uygulayabilir oldu.
                         .build();
 
                 jobBuilder.next(step);
